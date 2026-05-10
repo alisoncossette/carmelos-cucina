@@ -7,6 +7,8 @@
 
 [![Carmelo's Cucina — demo](https://img.youtube.com/vi/jTSO_XpUEP8/maxresdefault.jpg)](https://youtu.be/jTSO_XpUEP8)
 
+**Slide deck:** https://alisoncossette.github.io/carmelos-cucina/
+
 MakerMods says explicitly: *"AI automations are for convenience only, not safety or security-critical use cases."* **Carmelo's Cucina is the safety layer that makes the MakerMods convenience stack deployable around vulnerable users.** That's the whole project.
 
 ## How
