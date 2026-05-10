@@ -3,7 +3,9 @@
 > **A safety-first kitchen companion for an elderly user.**
 > Built on a dual-arm SO-101 with MakerMods ModBlocks. Submitted to the MakerMods hackathon.
 
-**Demo video:** https://youtu.be/jTSO_XpUEP8
+**Demo video:**
+
+[![Carmelo's Cucina — demo](https://img.youtube.com/vi/jTSO_XpUEP8/maxresdefault.jpg)](https://youtu.be/jTSO_XpUEP8)
 
 MakerMods says explicitly: *"AI automations are for convenience only, not safety or security-critical use cases."* **Carmelo's Cucina is the safety layer that makes the MakerMods convenience stack deployable around vulnerable users.** That's the whole project.
 
@@ -101,6 +103,8 @@ If the VLM emits invalid JSON, the parser returns `human_hand_visible=true`, `wo
 The Display + Button placeholders remain in place as clean HTTP/SDK call sites — they can be activated later by editing one provider line in `config.yaml`. For the hackathon, voice (ElevenLabs) is the primary interaction channel.
 
 ## Setup
+
+**SF team / anyone bringing this up on real hardware: see [SETUP.md](reflex-orchestrator/SETUP.md)** for the full step-by-step (cameras, lerobot handoff, smoke tests, common gotchas). The TL;DR:
 
 ```bash
 pip install -r requirements.txt
