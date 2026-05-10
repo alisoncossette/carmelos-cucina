@@ -21,7 +21,7 @@ policies:
     # Note: this policy sometimes doesn't fully depress the lever — when
     # verification fails (lever_down stays false after skill ends), the
     # orchestrator escalates to the agent's ask-for-help flow.
-    path: ajkoder/smolvla-toaster-on
+    path: qualia-robotics/smolvla-toaster-on-v1-7512c2d6
     timeout_s: 15
 
 fsm:
