@@ -104,9 +104,10 @@ The Display + Button placeholders remain in place as clean HTTP/SDK call sites â
 
 ## Setup
 
-**SF team / anyone bringing this up on real hardware: see [SETUP.md](reflex-orchestrator/SETUP.md)** for the full step-by-step (cameras, lerobot handoff, smoke tests, common gotchas). The TL;DR:
+**SF team / anyone bringing this up on real hardware: see [SETUP.md](SETUP.md)** for the full step-by-step (cameras, lerobot handoff, smoke tests, common gotchas). The TL;DR:
 
 ```bash
+cd reflex-orchestrator
 pip install -r requirements.txt
 
 # Voice agent needs one secret. Copy the example and paste your key.
@@ -130,7 +131,11 @@ If no mode flag is given, the orchestrator uses `agent.provider` as set in `conf
 
 ## Quick start
 
+All commands run from `reflex-orchestrator/`:
+
 ```bash
+cd reflex-orchestrator
+
 # Unit tests
 python test_fsm.py
 python test_safety.py

@@ -160,7 +160,7 @@ python run.py --config config.yaml --voice         # headline demo
 python run.py --config config.yaml --full          # adds spoken safety announcements
 ```
 
-Demo scenarios are listed in [the README](reflex-orchestrator/README.md#demoable-scenarios) — happy path, lever-help handoff, hand-in-workspace E-STOP, lever-pressed-mid-insertion E-STOP, camera covered, help timeout.
+Demo scenarios are listed in [the README](README.md#demoable-scenarios) — happy path, lever-help handoff, hand-in-workspace E-STOP, lever-pressed-mid-insertion E-STOP, camera covered, help timeout.
 
 ## Common gotchas
 
