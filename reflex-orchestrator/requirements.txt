@@ -1,0 +1,31 @@
+# Core
+pyyaml>=6.0
+numpy>=1.24
+opencv-python>=4.8
+python-dotenv>=1.0   # auto-loads .env at startup so ELEVENLABS_API_KEY is picked up
+
+# VLM (SmolVLM via HF transformers). Comment out if running stub-only.
+torch>=2.1
+transformers>=4.45
+accelerate>=0.30
+pillow>=10.0
+
+# For runmotion.ai HTTP integration (when wired up)
+requests>=2.31
+
+# Optional — offline voice agent (pyttsx3 = offline TTS, SpeechRecognition = STT).
+# Robotic-sounding; prefer ElevenLabs (below) for demos.
+# pyttsx3>=2.90
+
+# Voice agent — ElevenLabs cloud TTS (provider=eleven, used by --voice/--full).
+# Requires ELEVENLABS_API_KEY env var. Audio playback uses macOS `afplay`
+# (preinstalled); on Linux install `mpg123` or `ffmpeg`.
+elevenlabs>=1.0
+
+# STT for the one-shot "Would you like toast?" question when agent.voice_input=true.
+# Uses Google's free anonymous endpoint — no API key needed.
+SpeechRecognition>=3.10
+pyaudio>=0.2.13   # microphone driver; on macOS: `brew install portaudio` first
+
+# Optional — for Qwen2-VL backend
+# qwen-vl-utils

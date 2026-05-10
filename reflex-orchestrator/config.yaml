@@ -1,0 +1,86 @@
+# Carmelo's Cucina — orchestrator config
+# MakerMods hackathon submission
+
+vlm:
+  provider: smolvlm           # smolvlm | qwen2vl | stub
+  model_id: HuggingFaceTB/SmolVLM-Instruct
+  poll_hz: 1.5
+  device: cuda                # cuda | cpu | mps
+
+cameras:
+  wrist: 0                    # cv2 device id, OR a path to a saved-frames dir
+  env: 1
+
+policies:
+  bread_to_toaster:
+    # HF: ajkoder/smolvla-bread-toaster   (dataset: ajkoder/bread_in_toaster_v4)
+    path: ajkoder/smolvla-bread-toaster
+    timeout_s: 30
+  lever_down:
+    # HF: ajkoder/smolvla-toaster-on      (dataset: ajkoder/toaster_on_v1)
+    # Note: this policy sometimes doesn't fully depress the lever — when
+    # verification fails (lever_down stays false after skill ends), the
+    # orchestrator escalates to the agent's ask-for-help flow.
+    path: ajkoder/smolvla-toaster-on
+    timeout_s: 15
+
+fsm:
+  debounce_ticks: 3           # consecutive consistent VLM ticks to transition
+  max_skill_attempts: 2       # after this many failed attempts of the same skill,
+                              # the agent asks Carmelo for help, then SAFE_HALTs
+
+safety:
+  low_confidence_limit: 3
+  heartbeat_timeout_s: 5.0
+  require_workspace_clear: true
+
+gesture:
+  provider: stub              # stub | runmotion
+  # provider: runmotion
+  # api_key: ""
+  # arm_id: right
+  # motion_ids:
+  #   wave_no: ""
+  #   return_home: ""
+
+# MakerMods Display ModBlock (multi-color touchscreen, USB-C)
+display:
+  provider: stub              # stub | makermods
+  # provider: makermods
+  # device_id: display-0
+  # endpoint: http://localhost:8080
+
+# MakerMods Button ModBlock (physical short-press / long-press = E-STOP)
+button:
+  provider: stub              # stub | makermods
+  # provider: makermods
+  # device_id: button-0
+  # endpoint: http://localhost:8080
+  # long_press_threshold_s: 1.5
+
+agent:
+  provider: console           # console | stub | local | eleven | display
+  # Modes via CLI flag override this: --basic→stub, --voice→eleven, --full→eleven.
+  # display = MakerMods touchscreen + physical button (requires display + button wired).
+  # local   = pyttsx3 + speech_recognition (offline, robotic-sounding).
+  # eleven  = ElevenLabs cloud TTS (requires ELEVENLABS_API_KEY env var).
+
+  # ElevenLabs settings (only used when provider=eleven).
+  # To swap voice: pick one at https://elevenlabs.io/voice-library, copy its ID
+  # (e.g. EXAVITQu4vr4xnSDxMaL), and paste it here. No code change needed.
+  voice_id: EXAVITQu4vr4xnSDxMaL   # default: Sarah — warm, mature female
+  voice_input: true                # use mic+STT for the toast yes/no question
+  model: eleven_turbo_v2_5         # ElevenLabs model (turbo = lowest latency)
+
+  # How long to wait for the VLM to detect human help before re-asking or halting.
+  # Re-ask once at help_timeout_s; halt at 2x. Pressing a toaster lever is fast,
+  # so 15s is a comfortable default.
+  help_timeout_s: 15.0
+
+  # yes_no_timeout_s: 30.0          # only for provider=display
+
+dispatch:
+  cmd_template: >
+    lerobot-record
+    --policy.path={policy_path}
+    --record-time-s={timeout_s}
