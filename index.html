@@ -179,16 +179,13 @@
         }
         .slide.active .stagger-line.visible { opacity: 1; transform: translateY(0); }
 
-        .placeholder-photo {
+        .carmelo-portrait {
             width: 260px; height: 260px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--serif); font-size: 1rem; color: rgba(255,255,255,0.5);
+            object-fit: cover;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             margin-bottom: 2rem;
             border: 4px solid rgba(255,255,255,0.1);
-            text-align: center; padding: 1rem;
         }
 
         .controls {
@@ -236,7 +233,7 @@
     <!-- 01: OPEN -->
     <div class="slide bg-dark active" data-slide="0">
         <span class="slide-number">01</span>
-        <div class="placeholder-photo">[Carmelo<br>photo]</div>
+        <img class="carmelo-portrait" src="https://raw.githubusercontent.com/alisoncossette/carmelos-canine/main/carmelo_home.webp" alt="Carmelo" />
         <h1 class="hero">Carmelo wants to keep<br>making his own <em>toast</em>.</h1>
         <p class="subtitle">
             Independent living isn&rsquo;t about removing him from his kitchen.<br>
