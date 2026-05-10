@@ -262,7 +262,7 @@
                     <p style="margin-top:0.8rem; line-height:2; font-size:1rem;">
                         Mid-skill failure = <strong style="color:#059669;">verify, retry once, then ask</strong><br>
                         Hot toaster contact = <strong style="color:#059669;">preflight refuses dispatch</strong><br>
-                        Hand in workspace = <strong style="color:#059669;">arm waves no, halts</strong><br>
+                        Hand in workspace = <strong style="color:#059669;">halts, narrates pause</strong><br>
                         Partial press = <strong style="color:#059669;">&ldquo;Could you finish that part?&rdquo;</strong>
                     </p>
                 </div>
@@ -285,7 +285,7 @@
                 <div class="card card-dark" style="border-top:3px solid var(--green);">
                     <div class="card-num">02</div>
                     <h3>Communicate</h3>
-                    <p>The arm itself waves &ldquo;no&rdquo; via runmotion.ai when it sees Carmelo. Voice agent narrates intent (&ldquo;Would you like toast?&rdquo;) so he&rsquo;s never surprised.</p>
+                    <p>ElevenLabs voice agent narrates intent &mdash; startup question, every state transition, and help requests when a skill fails. Carmelo is never surprised.</p>
                 </div>
                 <div class="card card-dark" style="border-top:3px solid var(--orange);">
                     <div class="card-num">03</div>
@@ -314,8 +314,8 @@
                     <div style="display:flex; align-items:baseline; gap:1rem; padding:0.8rem 0; border-bottom:1px solid var(--border);">
                         <span style="font-family:var(--serif); font-size:1.8rem; color:var(--blue); min-width:60px;">T2</span>
                         <div>
-                            <div style="font-weight:700;">Scripted recovery</div>
-                            <div style="font-size:0.85rem; color:var(--text-light);">runmotion.ai gestures &mdash; deterministic, recorded fallback motions.</div>
+                            <div style="font-weight:700;">FSM retry with verification</div>
+                            <div style="font-size:0.85rem; color:var(--text-light);">VLM re-checks world state; re-dispatch up to max_skill_attempts before escalating.</div>
                         </div>
                     </div>
                     <div style="display:flex; align-items:baseline; gap:1rem; padding:0.8rem 0;">
@@ -388,25 +388,24 @@
     <div class="slide" data-slide="5">
         <span class="slide-number">06</span>
         <div class="slide-body" style="display:flex;flex-direction:column;align-items:center;">
-            <p class="eyebrow">No speaker. No screen.</p>
-            <h2 style="text-align:center;">The arm <em>itself</em> talks back.</h2>
+            <p class="eyebrow">Cloud TTS. Narrated intent.</p>
+            <h2 style="text-align:center;">The robot <em>tells Carmelo</em> what it&rsquo;s doing.</h2>
             <div class="card-grid-3" style="margin-top:1.5rem;">
                 <div class="card" style="border-top:3px solid var(--accent);">
-                    <h3>&#128075; wave_no</h3>
-                    <p>Side-to-side wrist wave at neutral elevation. Universal &ldquo;I see you, I&rsquo;m stopping.&rdquo; Fires on any safety halt.</p>
+                    <h3>&#127836; Welcome</h3>
+                    <p>At startup, the agent asks: &ldquo;Carmelo, would you like some toast?&rdquo; Mic captures yes/no &mdash; no answer means no action.</p>
                 </div>
                 <div class="card" style="border-top:3px solid var(--blue);">
-                    <h3>&#127968; return_home</h3>
-                    <p>Smooth move to safe pose. Signals &ldquo;standing by.&rdquo; Always follows wave_no so the arm clears the workspace.</p>
+                    <h3>&#128483; Narration</h3>
+                    <p>Every state transition is announced in a warm voice. &ldquo;Bread&rsquo;s in. Now for the lever.&rdquo; Carmelo isn&rsquo;t startled by a moving arm.</p>
                 </div>
                 <div class="card" style="border-top:3px solid var(--green);">
-                    <h3>&#128077; thumbs_up</h3>
-                    <p>Success signal &mdash; toast popped. Embodied confirmation that doesn&rsquo;t require Carmelo to look at a screen.</p>
+                    <h3>&#128587; Ask for help</h3>
+                    <p>After two failed attempts: &ldquo;Could you give the lever a press for me? I can&rsquo;t quite reach.&rdquo; The VLM watches for Carmelo&rsquo;s help and resumes silently.</p>
                 </div>
             </div>
-            <p style="font-size:0.82rem; color:var(--text-light); margin-top:1.5rem; text-align:center; max-width:600px; line-height:1.6;">
-                Powered by <strong>runmotion.ai</strong> for choreographed gesture playback.<br>
-                The agent narrates with ElevenLabs TTS &mdash; voice + body, two channels of the same intent.
+            <p style="font-size:0.82rem; color:var(--text-light); margin-top:1.5rem; text-align:center; max-width:640px; line-height:1.6;">
+                <strong>ElevenLabs</strong> cloud TTS, voice <em>Sarah</em>. Embodied gestures (runmotion.ai) are <strong>follow-on work</strong>; voice carries the same intents in this build.
             </p>
         </div>
     </div>
@@ -483,7 +482,7 @@
                         <span style="color:var(--text-light);">tick=58</span> state=PRESSING skill=<strong>none</strong><br>
                         <span style="color:var(--text-light);">attempt 2/2 for lever_down</span><br>
                         <span style="color:var(--accent);">skill failed twice &mdash; asking Carmelo for help</span><br>
-                        <span style="color:var(--text-light);">[GESTURE] wave_no &rarr; return_home</span>
+                        <span style="color:var(--text-light);">awaiting_help_since=now &middot; dispatch suspended</span>
                     </div>
                     <p style="font-size:0.82rem; color:var(--text-light); margin-top:1rem; line-height:1.6;">
                         Policy B doesn&rsquo;t fully depress the lever. The orchestrator detects it &mdash;
@@ -541,7 +540,6 @@
                         SO-101 dual-arm via LeRobot<br>
                         ACT &middot; SmolVLA policies (HF-hosted)<br>
                         Wrist + environment cameras<br>
-                        runmotion.ai gesture playback<br>
                         MakerMods ModBlocks bus<br>
                         lerobot-record subprocess dispatch
                     </p>
@@ -572,6 +570,9 @@
                     <div class="label" style="color:rgba(255,255,255,0.4);">Trained on Brev overnight</div>
                 </div>
             </div>
+            <p style="font-size:0.78rem; color:rgba(255,255,255,0.45); margin-top:1.6rem; text-align:center; letter-spacing:0.04em;">
+                <strong style="color:rgba(255,255,255,0.7);">Follow-on:</strong> embodied gestures (runmotion.ai) &middot; MakerMods Display + Button hardware activation
+            </p>
         </div>
     </div>
 
@@ -618,8 +619,10 @@
     <div class="slide" data-slide="11" style="background:var(--dark); padding:0;">
         <span class="slide-number" style="z-index:2;">13</span>
         <div style="position:absolute; inset:0;">
-            <div style="width:100%; height:100%; background:linear-gradient(135deg, var(--accent-dark) 0%, var(--dark) 70%);"></div>
-            <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.05) 100%);"></div>
+            <img src="https://raw.githubusercontent.com/alisoncossette/carmelos-canine/main/carmelo_family.webp"
+                 alt="Carmelo with family"
+                 style="width:100%; height:100%; object-fit:cover; object-position:center;" />
+            <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 100%);"></div>
         </div>
         <div style="position:absolute; bottom:5rem; left:6rem; right:6rem; z-index:1; max-width:760px;">
             <p style="font-family:var(--serif); font-size:clamp(1.2rem, 2.5vw, 1.8rem); color:rgba(255,255,255,0.5); line-height:1.5;">
