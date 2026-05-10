@@ -2,6 +2,8 @@
 
 This is the get-it-running guide for the team in SF with the SO-101. The orchestrator code is platform-agnostic; only [dispatch.py](reflex-orchestrator/dispatch.py) needs to live on the same machine as the robot. Follow the sections in order — each one ends in a check you can verify before moving on.
 
+For project context first (what we're building, why, and the demo scenarios): see the [README](README.md). Slide deck: https://alisoncossette.github.io/carmelos-cucina/.
+
 ## What the orchestrator owns vs. what lerobot owns
 
 This is the most important thing to internalise before you start, because it will save you debugging the wrong layer:
