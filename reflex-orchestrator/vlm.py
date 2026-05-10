@@ -161,20 +161,23 @@ class StubVLMClient:
         if self.script is None:
             base = {"workspace_clear": True, "human_hand_visible": False,
                     "user_present": True, "confidence": "high"}
-            self.script = [
-                {**base, "bread_visible": True},
-                {**base, "bread_visible": True},
-                {**base, "bread_visible": True},
-                {**base, "bread_visible": True, "bread_in_toaster": True},
-                {**base, "bread_visible": True, "bread_in_toaster": True},
-                {**base, "bread_visible": True, "bread_in_toaster": True},
-                {**base, "bread_visible": True, "bread_in_toaster": True, "lever_down": True},
-                {**base, "bread_visible": True, "bread_in_toaster": True, "lever_down": True},
-                {**base, "bread_visible": True, "bread_in_toaster": True, "lever_down": True},
-                {**base, "bread_visible": True, "toast_popped": True},
-                {**base, "bread_visible": True, "toast_popped": True},
-                {**base, "bread_visible": True, "toast_popped": True},
-            ]
+            # Timing notes (assuming poll_hz=1.5 → ~0.67s/tick, dry_run fake skill = 4s = 6 ticks):
+            #   ticks 0–2:  bread visible (FSM debounce → PLACING; bread_to_toaster dispatches)
+            #   ticks 3–8:  bread_in_toaster=True while bread skill is in flight (NO lever_down here —
+            #               that would trip LEVER_DOWN_DURING_INSERT safety)
+            #   tick  9:    bread skill done → PLACED → PRESSING; lever_down policy dispatches
+            #   ticks 9–14: lever_down=True while lever skill in flight
+            #   tick 15:    lever skill done → TOASTING
+            #   ticks 16+:  toast_popped=True → DONE
+            placed = {**base, "bread_visible": True, "bread_in_toaster": True}
+            lever  = {**placed, "lever_down": True}
+            popped = {**base, "bread_visible": True, "toast_popped": True}
+            self.script = (
+                [{**base, "bread_visible": True}] * 3   # PLACING debounce
+                + [placed] * 7                          # bread skill in flight
+                + [lever] * 7                           # lever skill in flight + transition
+                + [popped] * 4                          # toast popped → DONE
+            )
         self._idx = 0
 
     def observe(self, frames: dict[str, np.ndarray]) -> dict[str, Any]:
