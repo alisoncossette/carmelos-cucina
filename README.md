@@ -3,6 +3,18 @@
 > **A safety-first kitchen companion for an elderly user.**
 > Built on a dual-arm SO-101 with MakerMods ModBlocks. Submitted to the MakerMods hackathon.
 
+## Meet Carmelo
+
+He's 97. He lives alone. His grandson lives three states away. Every fall, every missed pill, every quiet day — nobody knows. A robot in the home can sit in that gap.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/alisoncossette/carmelos-canine/main/carmelo_home.webp" width="32%" alt="Carmelo at home" />
+  <img src="https://raw.githubusercontent.com/alisoncossette/carmelos-canine/main/carmelo_family.webp" width="32%" alt="Carmelo with family" />
+  <img src="https://raw.githubusercontent.com/alisoncossette/carmelos-canine/main/carmelo_pills.webp" width="32%" alt="Carmelo's medications" />
+</p>
+
+*Photos from the companion project [carmelos-canine](https://github.com/alisoncossette/carmelos-canine).*
+
 **Demo video:**
 
 [![Carmelo's Cucina — demo](https://img.youtube.com/vi/jTSO_XpUEP8/maxresdefault.jpg)](https://youtu.be/jTSO_XpUEP8)
