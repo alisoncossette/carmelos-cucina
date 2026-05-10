@@ -270,9 +270,28 @@
         </div>
     </div>
 
-    <!-- 03: WHAT WE BUILT -->
-    <div class="slide bg-dark" data-slide="2">
+    <!-- 03: MAKERMODS -->
+    <div class="slide bg-accent" data-slide="8">
         <span class="slide-number">03</span>
+        <div class="slide-body" style="display:flex;flex-direction:column;align-items:center;">
+            <p class="eyebrow">Why this matters here</p>
+            <h2 style="color:var(--white); text-align:center;">Closing the gap MakerMods <em>explicitly leaves open</em>.</h2>
+            <div style="background:rgba(255,255,255,0.1); border-left:4px solid var(--white); padding:1.5rem 2rem; margin-top:2rem; max-width:720px; border-radius:4px;">
+                <p style="font-family:var(--serif); font-size:1.4rem; color:var(--white); line-height:1.4;">
+                    &ldquo;AI automations are for convenience only,<br>not safety or security-critical use cases.&rdquo;
+                </p>
+                <p style="font-size:0.78rem; color:rgba(255,255,255,0.6); margin-top:0.6rem; letter-spacing:0.05em;">&mdash; makermods.ai/modblocks</p>
+            </div>
+            <p class="subtitle" style="color:rgba(255,255,255,0.85); margin-top:2rem;">
+                Carmelo&rsquo;s Cucina is the safety layer that turns the MakerMods convenience stack<br>
+                into something deployable around a vulnerable user.
+            </p>
+        </div>
+    </div>
+
+    <!-- 04: WHAT WE BUILT -->
+    <div class="slide bg-dark" data-slide="2">
+        <span class="slide-number">04</span>
         <div class="slide-body" style="display:flex;flex-direction:column;align-items:center;">
             <p class="eyebrow">What We Built</p>
             <h2 style="color:var(--white); text-align:center;">A safety-first orchestrator<br>around the <em>SO-101</em>.</h2>
@@ -291,49 +310,6 @@
                     <div class="card-num">03</div>
                     <h3>Defer</h3>
                     <p>Two failed attempts at the same skill &rarr; arm returns home, agent asks Carmelo to finish that step, FSM resumes when the VLM detects he&rsquo;s done.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 04: THREE TIERS OF RELIABILITY -->
-    <div class="slide" data-slide="3">
-        <span class="slide-number">04</span>
-        <div class="half">
-            <div>
-                <p class="eyebrow">Three Tiers of Reliability</p>
-                <h2>Designed around the assumption that <em>policies fail</em>.</h2>
-                <div style="margin-top:1.5rem;">
-                    <div style="display:flex; align-items:baseline; gap:1rem; padding:0.8rem 0; border-bottom:1px solid var(--border);">
-                        <span style="font-family:var(--serif); font-size:1.8rem; color:var(--green); min-width:60px;">T1</span>
-                        <div>
-                            <div style="font-weight:700;">Trained policy</div>
-                            <div style="font-size:0.85rem; color:var(--text-light);">ACT / SmolVLA. Flexible, learned. Most attempts succeed here.</div>
-                        </div>
-                    </div>
-                    <div style="display:flex; align-items:baseline; gap:1rem; padding:0.8rem 0; border-bottom:1px solid var(--border);">
-                        <span style="font-family:var(--serif); font-size:1.8rem; color:var(--blue); min-width:60px;">T2</span>
-                        <div>
-                            <div style="font-weight:700;">FSM retry with verification</div>
-                            <div style="font-size:0.85rem; color:var(--text-light);">VLM re-checks world state; re-dispatch up to max_skill_attempts before escalating.</div>
-                        </div>
-                    </div>
-                    <div style="display:flex; align-items:baseline; gap:1rem; padding:0.8rem 0;">
-                        <span style="font-family:var(--serif); font-size:1.8rem; color:var(--accent); min-width:60px;">T3</span>
-                        <div>
-                            <div style="font-weight:700;">Ask Carmelo</div>
-                            <div style="font-size:0.85rem; color:var(--text-light);">Last resort. The robot does what it can; Carmelo finishes the rest.</div>
-                        </div>
-                    </div>
-                </div>
-                <p style="font-size:0.82rem; color:var(--text-light); margin-top:1.2rem; line-height:1.6;">
-                    Graceful degradation, not catastrophic failure.
-                </p>
-            </div>
-            <div style="display:flex; justify-content:center;">
-                <div class="tier-ring">
-                    <div class="num">3</div>
-                    <div class="label">Safety Layers</div>
                 </div>
             </div>
         </div>
@@ -444,7 +420,6 @@
         </div>
     </div>
 
-    <!-- 08: PROOF -->
     <!-- 08: DEMO VIDEO -->
     <div class="slide bg-dark" data-slide="12">
         <span class="slide-number">08</span>
@@ -508,28 +483,9 @@
         </div>
     </div>
 
-    <!-- 10: MAKERMODS -->
-    <div class="slide bg-accent" data-slide="8">
-        <span class="slide-number">10</span>
-        <div class="slide-body" style="display:flex;flex-direction:column;align-items:center;">
-            <p class="eyebrow">Why this matters here</p>
-            <h2 style="color:var(--white); text-align:center;">Closing the gap MakerMods <em>explicitly leaves open</em>.</h2>
-            <div style="background:rgba(255,255,255,0.1); border-left:4px solid var(--white); padding:1.5rem 2rem; margin-top:2rem; max-width:720px; border-radius:4px;">
-                <p style="font-family:var(--serif); font-size:1.4rem; color:var(--white); line-height:1.4;">
-                    &ldquo;AI automations are for convenience only,<br>not safety or security-critical use cases.&rdquo;
-                </p>
-                <p style="font-size:0.78rem; color:rgba(255,255,255,0.6); margin-top:0.6rem; letter-spacing:0.05em;">&mdash; makermods.ai/modblocks</p>
-            </div>
-            <p class="subtitle" style="color:rgba(255,255,255,0.85); margin-top:2rem;">
-                Carmelo&rsquo;s Cucina is the safety layer that turns the MakerMods convenience stack<br>
-                into something deployable around a vulnerable user.
-            </p>
-        </div>
-    </div>
-
-    <!-- 11: STACK -->
+    <!-- 10: STACK -->
     <div class="slide bg-dark" data-slide="9">
-        <span class="slide-number">11</span>
+        <span class="slide-number">10</span>
         <div class="slide-body" style="display:flex;flex-direction:column;align-items:center;">
             <p class="eyebrow">The Stack</p>
             <h2 style="color:var(--white); text-align:center;">Everything we shipped.</h2>
@@ -576,9 +532,9 @@
         </div>
     </div>
 
-    <!-- 12: TEAM + LINKS -->
+    <!-- 11: TEAM + LINKS -->
     <div class="slide" data-slide="10">
-        <span class="slide-number">12</span>
+        <span class="slide-number">11</span>
         <div class="slide-body" style="display:flex;flex-direction:column;align-items:center;">
             <p class="eyebrow">Team Carmelo&rsquo;s Cucina</p>
             <h2 style="text-align:center;">Built remotely + locally<br>over <em>one weekend</em>.</h2>
@@ -615,9 +571,9 @@
         </div>
     </div>
 
-    <!-- 13: CLOSE -->
+    <!-- 12: CLOSE -->
     <div class="slide bg-dark" data-slide="11">
-        <span class="slide-number">13</span>
+        <span class="slide-number">12</span>
         <div class="slide-body" style="display:flex; gap:3rem; align-items:center; flex-wrap:wrap; justify-content:center;">
             <div style="flex:0 1 360px; max-width:360px;">
                 <img src="https://raw.githubusercontent.com/alisoncossette/carmelos-canine/main/carmelo_family.webp"
@@ -645,7 +601,7 @@
 <!-- Controls -->
 <div class="controls">
     <button onclick="go(-1)">&larr;</button>
-    <span class="progress" id="progress">1 / 13</span>
+    <span class="progress" id="progress">1 / 12</span>
     <button onclick="go(1)">&rarr;</button>
 </div>
 
