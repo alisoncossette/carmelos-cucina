@@ -13,15 +13,15 @@ cameras:
 
 policies:
   bread_to_toaster:
-    # HF: ajkoder/smolvla-bread-toaster   (dataset: ajkoder/bread_in_toaster_v4)
-    path: ajkoder/smolvla-bread-toaster
+    # HF: sameer-s1/smolvla-bread-to-toaster-v1   (dataset: sameer-s1/bread-in-toaster-dataset-v1)
+    path: sameer-s1/smolvla-bread-to-toaster-v1
     timeout_s: 30
   lever_down:
-    # HF: ajkoder/smolvla-toaster-on      (dataset: ajkoder/toaster_on_v1)
+    # HF: sameer-s1/smolvla-toaster-lever-down-v1   (dataset: sameer-s1/toaster-lever-down-dataset-v1)
     # Note: this policy sometimes doesn't fully depress the lever — when
     # verification fails (lever_down stays false after skill ends), the
     # orchestrator escalates to the agent's ask-for-help flow.
-    path: qualia-robotics/smolvla-toaster-on-v1-7512c2d6
+    path: sameer-s1/smolvla-toaster-lever-down-v1
     timeout_s: 15
 
 fsm:
